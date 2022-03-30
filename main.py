@@ -8,11 +8,17 @@ soup = BeautifulSoup(yc_web_page, "html.parser")
 
 #get the title of each article listed
 article_text = soup.find(name="a", class_="titlelink")
+article_link = article_text.get("href")
+article_upvote = soup.find(name="span", class_="score")
 print(article_text.getText())
+print(article_link)
+print(article_upvote.getText())
 
-article_titles = soup.find_all(name="a", class_="titlelink")
-for title in article_titles:
-    print(title.getText())
+
+
+# article_titles = soup.find_all(name="a", class_="titlelink")
+# for title in article_titles:
+#     print(title.getText())
 
 
 
