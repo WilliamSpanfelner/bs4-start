@@ -25,11 +25,11 @@ print(all_a_elements)
 all_paragraph_tags = soup.find_all(name="p")
 print(all_paragraph_tags)
 
-# Use the getText() method to return the content text (eg for anchor tags)
+# Use the getText() method to return the content text (e.g. for anchor tags)
 for tag in all_a_elements:
     print(tag.getText())
 
-# Use the get() method to return the value of any attribute (eg href)
+# Use the get() method to return the value of any attribute (e.g. href)
 for tag in all_a_elements:
     print(tag.get("href"))
     # prints all the target http links
