@@ -46,3 +46,18 @@ print(section_heading)
 print(section_heading.name)
 print(section_heading.getText())
 print(section_heading.get("class"))
+
+# Use CSS selectors to get specific information like a company url
+company_url = soup.select_one(selector="p a")
+print(company_url)
+print(company_url.get("href"))
+
+# CSS selectors can also be use to retrieve id values -
+# the id key must be prefixed with #
+name = soup.select_one(selector="#name")
+print(name)
+print(name.getText("id"))
+
+# CSS selectors can be use to create a list of items with a common class name for instance.
+headings = soup.select(".heading")
+print(headings)
