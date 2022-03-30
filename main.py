@@ -17,11 +17,8 @@ for article_title in articles:
     article_titles.append(title)
     link = article_title.get("href")
     article_links.append(link)
-    print(title)
-    print(link)
 
-# article_link = article_text.get("href")
-article_upvotes = [score.getText() for score in soup.find_all(name="span", class_="score")]
+article_upvotes = [int(score.getText().split()[0]) for score in soup.find_all(name="span", class_="score")]
 
 print(article_titles)
 print(article_links)
