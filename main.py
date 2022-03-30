@@ -6,6 +6,22 @@ yc_web_page = response.text
 
 soup = BeautifulSoup(yc_web_page, "html.parser")
 
+#get the title of each article listed
+article_text = soup.find(name="a", class_="titlelink")
+print(article_text.getText())
+
+article_titles = soup.find_all(name="a", class_="titlelink")
+for title in article_titles:
+    print(title.getText())
+
+
+
+
+
+
+
+
+
 
 # with open("website.html", "r") as file:
 #     contents = file.read()
