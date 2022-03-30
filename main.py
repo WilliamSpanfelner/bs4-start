@@ -33,3 +33,16 @@ for tag in all_a_elements:
 for tag in all_a_elements:
     print(tag.get("href"))
     # prints all the target http links
+
+# Use the find method to return the first item that matches specified criteria
+# e.g. element name and id values
+heading = soup.find(name="h1", id="name")
+print(heading)
+
+# Similarly, finding elements with a specific class name is done like so.
+# The class keyword requires an underscore suffix since its normal HTML use is for assigning a name.
+section_heading = soup.find(name="h3", class_="heading")
+print(section_heading)
+print(section_heading.name)
+print(section_heading.getText())
+print(section_heading.get("class"))
