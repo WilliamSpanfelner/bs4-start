@@ -7,12 +7,25 @@ yc_web_page = response.text
 soup = BeautifulSoup(yc_web_page, "html.parser")
 
 #get the title of each article listed
-article_text = soup.find(name="a", class_="titlelink")
-article_link = article_text.get("href")
-article_upvote = soup.find(name="span", class_="score")
-print(article_text.getText())
-print(article_link)
-print(article_upvote.getText())
+articles = soup.find_all(name="a", class_="titlelink")
+
+article_titles = []
+article_links = []
+
+for article_title in articles:
+    title = article_title.getText()
+    article_titles.append(title)
+    link = article_title.get("href")
+    article_links.append(link)
+    print(title)
+    print(link)
+
+# article_link = article_text.get("href")
+article_upvotes = [score.getText() for score in soup.find_all(name="span", class_="score")]
+
+print(article_titles)
+print(article_links)
+print(article_upvotes)
 
 
 
