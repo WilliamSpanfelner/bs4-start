@@ -24,6 +24,15 @@ print(article_titles)
 print(article_links)
 print(article_upvotes)
 
+max_votes = 0
+for index in range(0, len(article_upvotes)):
+    if article_upvotes[index] > max_votes:
+        max_votes = article_upvotes[index]
+        i = index
+
+print(max_votes, i)
+print(article_titles[i], article_links[i])
+
 
 
 # article_titles = soup.find_all(name="a", class_="titlelink")
