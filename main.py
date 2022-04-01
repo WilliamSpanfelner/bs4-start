@@ -24,14 +24,22 @@ print(article_titles)
 print(article_links)
 print(article_upvotes)
 
-max_votes = 0
-for index in range(0, len(article_upvotes)):
-    if article_upvotes[index] > max_votes:
-        max_votes = article_upvotes[index]
-        i = index
+#Get the maximum value from the article_upvotes list and use it to determine its index value,
+# which can be use to retrieve the corresponding elements in the other lists.
+max_vote_count = max(article_upvotes)
+max_vote_count_index = article_upvotes.index(max_vote_count)
 
-print(max_votes, i)
-print(article_titles[i], article_links[i])
+print(article_titles[max_vote_count_index])
+print(article_links[max_vote_count_index])
+
+# max_votes = 0
+# for index in range(0, len(article_upvotes)):
+#     if article_upvotes[index] > max_votes:
+#         max_votes = article_upvotes[index]
+#         i = index
+#
+# print(max_votes, i)
+# print(article_titles[i], article_links[i])
 
 
 
