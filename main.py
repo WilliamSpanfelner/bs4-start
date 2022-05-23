@@ -1,4 +1,60 @@
 from bs4 import BeautifulSoup
+import requests
+
+response = requests.get("https://news.ycombinator.com/news")
+yc_web_page = response.text
+
+soup = BeautifulSoup(yc_web_page, "html.parser")
+
+#get the title of each article listed
+articles = soup.find_all(name="a", class_="titlelink")
+
+article_titles = []
+article_links = []
+
+for article_title in articles:
+    title = article_title.getText()
+    article_titles.append(title)
+    link = article_title.get("href")
+    article_links.append(link)
+
+article_upvotes = [int(score.getText().split()[0]) for score in soup.find_all(name="span", class_="score")]
+
+print(article_titles)
+print(article_links)
+print(article_upvotes)
+
+#Get the maximum value from the article_upvotes list and use it to determine its index value,
+# which can be use to retrieve the corresponding elements in the other lists.
+max_vote_count = max(article_upvotes)
+max_vote_count_index = article_upvotes.index(max_vote_count)
+
+print(article_titles[max_vote_count_index])
+print(article_links[max_vote_count_index])
+
+# max_votes = 0
+# for index in range(0, len(article_upvotes)):
+#     if article_upvotes[index] > max_votes:
+#         max_votes = article_upvotes[index]
+#         i = index
+#
+# print(max_votes, i)
+# print(article_titles[i], article_links[i])
+
+
+
+# article_titles = soup.find_all(name="a", class_="titlelink")
+# for title in article_titles:
+#     print(title.getText())
+
+
+
+
+
+
+
+
+
 
 # with open("website.html", "r") as file:
 #     contents = file.read()
